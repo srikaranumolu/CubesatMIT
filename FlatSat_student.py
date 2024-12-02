@@ -10,8 +10,8 @@ The provided functions are only for reference, you do not need to use them.
 You will need to complete the take_photo() function and configure the VARIABLES section
 """
 
-#AUTHOR: 
-#DATE:
+#AUTHOR: Lunar Loudoun
+#DATE: 11/29/2024
 
 #import libraries
 import time
