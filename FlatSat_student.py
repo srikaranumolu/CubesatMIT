@@ -73,8 +73,8 @@ def take_photo():
         accelx, accely, accelz = accel_gyro.acceleration
         if (accely > THRESHOLD or accelx > THRESHOLD or accelz > THRESHOLD):
             time.sleep(2)
-            name = img_gen("LunarL")
-            picam2.capture(name+'.jpg')
+            imgname = img_gen("LunarL")
+            picam2.capture(imgname+'.jpg')
             git_push()
         #CHECKS IF READINGS ARE ABOVE THRESHOLD
             #PAUSE
