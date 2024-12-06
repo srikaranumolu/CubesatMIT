@@ -23,7 +23,11 @@ from picamera2 import Picamera2
 
 #VARIABLES
 THRESHOLD = 0      #Any desired value from the accelerometer
+<<<<<<< HEAD
 REPO_PATH = "https://github.com/srikaranumolu/CubesatMIT.git"     #Your github repo path: ex. /home/pi/FlatSatChallenge
+=======
+REPO_PATH = "home/lunarloudoun/CubesatMIT"     #Your github repo path: ex. /home/pi/FlatSatChallenge
+>>>>>>> 3063bff (Sayuij Biju)
 FOLDER_PATH = "/images"   #Your image folder path in your GitHub repo: ex. /Images
 
 #imu and camera initialization
@@ -38,7 +42,9 @@ def git_push():
     This function is complete. Stages, commits, and pushes new images to your GitHub repo.
     """
     try:
+        print("Checking RepoPath")
         repo = Repo(REPO_PATH)
+        print("repo added")
         origin = repo.remote('origin')
         print('added remote')
         origin.pull()
@@ -71,18 +77,34 @@ def take_photo():
     """
     while True:
         accelx, accely, accelz = accel_gyro.acceleration
+<<<<<<< HEAD
         if (accely > THRESHOLD or accelx > THRESHOLD or accelz > THRESHOLD):
             time.sleep(2)
             imgname = img_gen("LunarL")
             picam2.capture(imgname+'.jpg')
             git_push()
+=======
+>>>>>>> 3063bff (Sayuij Biju)
         #CHECKS IF READINGS ARE ABOVE THRESHOLD
+        if (accely > THRESHOLD or accelx > THRESHOLD or accelz > THRESHOLD):
+            picam2.start()
             #PAUSE
-            #name = ""     #First Name, Last Initial  ex. MasonM
+            time.sleep(2)
+            imgname = img_gen("LunarL")
             #TAKE PHOTO
+            picam2.capture_file(imgname)
+
             #PUSH PHOTO TO GITHUB
+<<<<<<< HEAD
         time.sleep(2)
+=======
+            git_push()
+            
+>>>>>>> 3063bff (Sayuij Biju)
         #PAUSE
+        picam2.stop()
+        time.sleep(2)
+        
 
 
 def main():
