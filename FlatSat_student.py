@@ -38,18 +38,12 @@ def git_push():
     This function is complete. Stages, commits, and pushes new images to your GitHub repo.
     """
     try:
-        print("Checking RepoPath")
         repo = Repo(REPO_PATH)
-        print("repo added")
         origin = repo.remote('origin')
-        print('added remote')
         origin.pull()
-        print('pulled changes')
         repo.git.add(REPO_PATH + FOLDER_PATH)
         repo.index.commit('New Photo')
-        print('made the commit')
         origin.push()
-        print('pushed changes')
     except:
         print('Couldn\'t upload to git')
 
@@ -77,16 +71,12 @@ def take_photo():
         if (accely > THRESHOLD or accelx > THRESHOLD or accelz > THRESHOLD):
             picam2.start()
             #PAUSE
-            print("Shake detected")
             time.sleep(2)
-            print("Making Name")
             imgname = img_gen("LunarL")
             #TAKE PHOTO
-            print("Taking Photo")
             picam2.capture_file(imgname)
             time.sleep(2)
             #PUSH PHOTO TO GITHUB
-            print("Pushing to GitHub")
             git_push()
             
         #PAUSE
