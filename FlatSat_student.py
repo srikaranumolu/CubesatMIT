@@ -76,11 +76,11 @@ def take_photo():
             #TAKE PHOTO
             picam2.capture_file(imgname)
             #PUSH PHOTO TO GITHUB
+            picam2.stop()
+            time.sleep(1)
             git_push()
-            time.sleep(2)
             
         #PAUSE
-        picam2.stop()
         time.sleep(2)
         
 
