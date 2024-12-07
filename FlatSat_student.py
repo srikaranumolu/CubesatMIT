@@ -75,9 +75,9 @@ def take_photo():
             imgname = img_gen("LunarL")
             #TAKE PHOTO
             picam2.capture_file(imgname)
-            time.sleep(2)
             #PUSH PHOTO TO GITHUB
             git_push()
+            time.sleep(2)
             
         #PAUSE
         picam2.stop()
