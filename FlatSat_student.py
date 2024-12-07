@@ -24,7 +24,7 @@ from picamera2 import Picamera2
 #VARIABLES
 THRESHOLD = 0      #Any desired value from the accelerometer
 REPO_PATH = ""     #Your github repo path: ex. /home/pi/FlatSatChallenge
-FOLDER_PATH = "/images"   #Your image folder path in your GitHub repo: ex. /Images
+FOLDER_PATH = "images"   #Your image folder path in your GitHub repo: ex. /Images
 
 #imu and camera initialization
 i2c = board.I2C()
@@ -62,7 +62,7 @@ def img_gen(name):
         name (str): your name ex. MasonM
     """
     t = time.strftime("_%H%M%S")
-    imgname = (f'{REPO_PATH}/{FOLDER_PATH}/{name}{t}.jpg')
+    imgname = (f'{FOLDER_PATH}/{name}{t}.jpg')
     return imgname
 
 
@@ -77,12 +77,16 @@ def take_photo():
         if (accely > THRESHOLD or accelx > THRESHOLD or accelz > THRESHOLD):
             picam2.start()
             #PAUSE
+            print("Shake detected")
             time.sleep(2)
+            print("Making Name")
             imgname = img_gen("LunarL")
             #TAKE PHOTO
+            print("Taking Photo")
             picam2.capture_file(imgname)
-
+            time.sleep(2)
             #PUSH PHOTO TO GITHUB
+            print("Pushing to GitHub")
             git_push()
             
         #PAUSE
